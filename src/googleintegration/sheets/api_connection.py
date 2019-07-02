@@ -13,7 +13,7 @@ def __create_api_connection():
 
     delegated_credentials = credentials.with_subject(GOOGLE_API['delegated_user'])
 
-    return build('sheets', 'v4', credentials=delegated_credentials)
+    return build('sheets', 'v4', credentials=delegated_credentials, cache_discovery=False)
 
 
 service = __create_api_connection()
