@@ -3,8 +3,6 @@ import logging
 import os
 
 load_dotenv()
-logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
-logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 ENV = os.environ.get('ENV')
 
@@ -16,3 +14,8 @@ GOOGLE_API = {
         'https://www.googleapis.com/auth/spreadsheets.readonly'
     ]
 }
+
+
+def setup_logging():
+    logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
