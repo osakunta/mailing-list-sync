@@ -1,4 +1,4 @@
-from directory_api import members
+from src.directory_api import members
 
 
 def synchronize_group(group_key, new_list):
