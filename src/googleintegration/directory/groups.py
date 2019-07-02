@@ -1,16 +1,11 @@
-import logging
 from src.googleintegration.directory.api_connection import service
 
 
-def get():
-    logging.info('Getting the first 10 groups in the domain')
-    results = service.groups().list(customer='my_customer', maxResults=10).execute()
+def list_all(page_token=None):
+    response = service.groups().list(customer='my_customer', pageToken=page_token).execute()
+    groups = response.get('groups', [])
 
-    groups = results.get('groups', [])
-
-    if not groups:
-        logging.info('No groups in the domain.')
-    else:
-        logging.info('Groups:')
-        for group in groups:
-            logging.info(u'{0} ({1})'.format(group['name'], group['email']))
+    try:
+        return groups + list_all(page_token=response['nextPageToken'])
+    except KeyError:
+        return groups
