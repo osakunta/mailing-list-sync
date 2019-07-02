@@ -20,10 +20,12 @@ to it:
 
 Running
 -------
-The program can be run with the following command:
+The program can be run with one of the following command:
 
     python -m src
+    make run
     
-Tests are executed with:
+Tests are executed with one of the following:
     
     python -m unittest
+    make test
