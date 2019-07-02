@@ -1,10 +1,7 @@
-from __future__ import print_function
-from src.directory_api import groups
-
-
-def main():
-    groups.get()
+from src.config import setup_logging
+from src.cli_tool import cli
 
 
 if __name__ == '__main__':
-    main()
+    setup_logging()
+    cli()
