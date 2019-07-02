@@ -24,10 +24,7 @@ def synchronize_group(group_key, new_list):
 
 def __get_old_list(group_key):
     old_group = members.list_all(group_key)
-    old_list = []
-
-    for member in old_group:
-        old_list = old_list + [member['email']]
+    old_list = map(lambda member: member['email'], old_group)
 
     return old_list
 
