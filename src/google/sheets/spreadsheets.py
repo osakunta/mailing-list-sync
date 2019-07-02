@@ -1,4 +1,5 @@
 from src.google.sheets.api_connection import service
+from src.utils import flatten
 
 
 def get(spreadsheet_id, range):
@@ -8,5 +9,6 @@ def get(spreadsheet_id, range):
     )
 
     response = request.execute()
+    values = flatten(response.get('values', []))
 
-    return response
+    return values
