@@ -1,4 +1,2 @@
 [run]
-omit =
-    venv/*
-    */tests/*
+include = src/*
