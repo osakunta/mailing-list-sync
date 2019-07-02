@@ -3,12 +3,12 @@ from src.google.directory.api_connection import service
 
 def list_all(group_key, page_token=None):
     response = service.members().list(groupKey=group_key, pageToken=page_token).execute()
-    members = response.get('members')
+    members = response.get('members', [])
 
     try:
         return members + list_all(group_key, page_token=response['nextPageToken'])
     except KeyError:
-        return members or []
+        return members
 
 
 def insert_and_remove_in_batch(group_key, insert_list, remove_list):
