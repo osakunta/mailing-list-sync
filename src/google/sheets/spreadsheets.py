@@ -2,10 +2,10 @@ from src.google.sheets.api_connection import service
 from src.utils import flatten
 
 
-def get(spreadsheet_id, range):
+def get(spreadsheet_id, value_range):
     request = service.spreadsheets().values().get(
         spreadsheetId=spreadsheet_id,
-        range=range,
+        range=value_range,
     )
 
     response = request.execute()
