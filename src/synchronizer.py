@@ -1,5 +1,5 @@
 import logging
-from src.google.directory import members
+from src.googleintegration.directory import members
 
 
 def synchronize_group(group_key, new_list):

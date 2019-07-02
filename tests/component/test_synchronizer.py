@@ -1,5 +1,5 @@
 import unittest
-from src.google.directory import members
+from src.googleintegration.directory import members
 
 
 def list_all_mock(arg):

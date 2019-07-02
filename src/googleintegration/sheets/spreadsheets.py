@@ -1,4 +1,4 @@
-from src.google.sheets.api_connection import service
+from src.googleintegration.sheets.api_connection import service
 from src.utils import flatten
 
 

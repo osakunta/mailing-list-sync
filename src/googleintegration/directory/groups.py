@@ -1,5 +1,5 @@
 import logging
-from src.google.directory.api_connection import service
+from src.googleintegration.directory.api_connection import service
 
 
 def get():
