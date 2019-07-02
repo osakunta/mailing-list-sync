@@ -1,6 +1,5 @@
 import unittest
-from src.synchronizer import synchronize_group
-from src.google import members
+from src.google.directory import members
 
 
 def list_all_mock(arg):

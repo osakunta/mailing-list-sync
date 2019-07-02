@@ -1,4 +1,4 @@
-from src.google.api_connection import service
+from src.google.directory.api_connection import service
 
 
 def list_all(group_key, page_token=None):

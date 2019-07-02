@@ -1,17 +1,10 @@
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-SCOPES = ['https://www.googleapis.com/auth/admin.directory.group']
-SERVICE_ACCOUNT_FILE = os.environ.get('SERVICE_ACCOUNT_FILE')
-DELEGATED_USER = os.environ.get('DELEGATED_USER')
+from src.google.api_config import ENV, SERVICE_ACCOUNT_FILE, DELEGATED_USER, SCOPES
 
 
 def __create_api_connection():
-    if os.environ.get('ENV') == 'test':
+    if ENV == 'test':
         return
 
     credentials = service_account.Credentials.from_service_account_file(

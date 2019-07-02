@@ -1,4 +1,4 @@
-from .api_connection import service
+from src.google.directory.api_connection import service
 
 
 def get():
