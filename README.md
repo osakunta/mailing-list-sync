@@ -3,6 +3,7 @@ mailing-list-sync
 
 [![Build Status](https://travis-ci.org/osakunta/mailing-list-sync.svg?branch=master)](https://travis-ci.org/osakunta/mailing-list-sync)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bda5348a07af46528aa4220d9638fdf7)](https://www.codacy.com/app/Osakunta/mailing-list-sync?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=osakunta/mailing-list-sync&amp;utm_campaign=Badge_Grade)
+[![Coverage Badge](https://api.codacy.com/project/badge/Coverage/bda5348a07af46528aa4220d9638fdf7)](https://www.codacy.com/app/Osakunta/mailing-list-sync?utm_source=github.com&utm_medium=referral&utm_content=osakunta/mailing-list-sync&utm_campaign=Badge_Coverage)
 
 This program can synchronize a Google Groups mailing list with a new list. It gets the old list of members from Google
 and compares it to the new list given to it. After that a batch request is sent to Google Directory API which tells it
