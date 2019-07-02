@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
-from src.google.api_config import ENV, SERVICE_ACCOUNT_FILE, DELEGATED_USER, SCOPES
+from src.config import GOOGLE_API, ENV
 
 
 def __create_api_connection():
@@ -8,10 +8,10 @@ def __create_api_connection():
         return
 
     credentials = service_account.Credentials.from_service_account_file(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES
+        GOOGLE_API['service_account_file'], scopes=GOOGLE_API['scopes']
     )
 
-    delegated_credentials = credentials.with_subject(DELEGATED_USER)
+    delegated_credentials = credentials.with_subject(GOOGLE_API['delegated_user'])
 
     return build('admin', 'directory_v1', credentials=delegated_credentials)
 
