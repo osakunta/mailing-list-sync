@@ -8,7 +8,7 @@ def list_all(group_key, page_token=None):
     try:
         return members + list_all(group_key, page_token=response['nextPageToken'])
     except KeyError:
-        return members
+        return members or []
 
 
 def insert_and_remove_in_batch(group_key, insert_list, remove_list):
