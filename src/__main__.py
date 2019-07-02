@@ -1,5 +1,5 @@
 from __future__ import print_function
-from directory_api import groups
+from src.directory_api import groups
 
 
 def main():
