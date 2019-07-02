@@ -6,3 +6,6 @@ credentials.json
 .env
 venv/
 .idea/
+
+.coverage
+coverage.xml

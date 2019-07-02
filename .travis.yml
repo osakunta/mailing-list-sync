@@ -4,4 +4,4 @@ python:
 install:
   - 'pip install pipenv'
   - 'pipenv install --dev'
-script: 'make test'
+script: 'make coverage-upload'
