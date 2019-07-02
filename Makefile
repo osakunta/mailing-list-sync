@@ -2,4 +2,4 @@ run:
 	python -m src
 
 test:
-	python -m unittest
+	ENV=test python -m unittest

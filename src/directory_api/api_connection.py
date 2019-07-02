@@ -11,6 +11,9 @@ DELEGATED_USER = os.environ.get('DELEGATED_USER')
 
 
 def __create_api_connection():
+    if os.environ.get('ENV') == 'test':
+        return
+
     credentials = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES
     )

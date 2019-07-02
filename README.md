@@ -27,5 +27,5 @@ The program can be run with one of the following command:
     
 Tests are executed with one of the following:
     
-    python -m unittest
+    ENV=test python -m unittest
     make test
