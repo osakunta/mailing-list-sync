@@ -1,7 +1,9 @@
 from dotenv import load_dotenv
+import logging
 import os
 
 load_dotenv()
+logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
 ENV = os.environ.get('ENV')
 

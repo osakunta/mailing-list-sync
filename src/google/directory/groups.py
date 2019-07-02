@@ -1,15 +1,16 @@
+import logging
 from src.google.directory.api_connection import service
 
 
 def get():
-    print('Getting the first 10 groups in the domain')
+    logging.info('Getting the first 10 groups in the domain')
     results = service.groups().list(customer='my_customer', maxResults=10).execute()
 
     groups = results.get('groups', [])
 
     if not groups:
-        print('No groups in the domain.')
+        logging.info('No groups in the domain.')
     else:
-        print('Groups:')
+        logging.info('Groups:')
         for group in groups:
-            print(u'{0} ({1})'.format(group['name'], group['email']))
+            logging.info(u'{0} ({1})'.format(group['name'], group['email']))
