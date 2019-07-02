@@ -4,4 +4,4 @@ python:
 install:
   - 'pip install pipenv'
   - 'pipenv install --dev'
-script: 'python -m unittest'
+script: 'make test'
