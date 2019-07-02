@@ -21,12 +21,24 @@ to it:
 
 Running
 -------
-The program can be run with one of the following command:
+The cli tool can be run with one of the following command which lists all the available commands:
 
     python -m src
-    make run
+
+Tests are executed the following command:
     
-Tests are executed with one of the following:
-    
-    ENV=test python -m unittest
     make test
+
+Synchronizing a mailing list
+----------------------------
+At the moment the cli tool can only synchronize a list from a Google sheet.
+
+    python -m src sync [SHEET_ID] [CELL_RANGE] [GROUP_NAME]
+
+For example
+
+    python -m src sync 1337 Sheet1!A1:A5 google-group@example.com
+
+will fetch values of the cells `A1:A5` in tab `Sheet1` from a spreadsheet which has an id of `1337` and synchronize the
+group `google-group@example.com` with the fetched email addresses. If only a cell range `A1:A5` is used, the first tab
+in the sheet will be used.
