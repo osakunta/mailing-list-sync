@@ -8,7 +8,7 @@ def __create_api_connection():
         return
 
     credentials = service_account.Credentials.from_service_account_file(
-        GOOGLE_API['service_account_file'], scopes=GOOGLE_API['scopes']
+        GOOGLE_API['service_account_file'], scopes=GOOGLE_API['directory_scopes']
     )
 
     delegated_credentials = credentials.with_subject(GOOGLE_API['delegated_user'])
