@@ -9,6 +9,19 @@ This program can synchronize a Google Groups mailing list with a new list. It ge
 and compares it to the new list given to it. After that a batch request is sent to Google Directory API which tells it
 to add members that are only on the new list and remove members that are only on the old list.
 
+Configuring permissions
+-----------------------
+The app uses a service account and delegated API client to access the necessary Google APIs. To get the needed
+permissions, create a Google project, add a service account to it and generate a JSON credentials and download it. You
+also need to have a G Suite admin account from which you need to delegate access rights to your Google Groups. Read the
+[Google documentation](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) for further details.
+The service account in question needs to also have a read access to the Google sheet and the project needs to have
+Admin SDK and Sheets APIs enabled.
+
+There needs to be an environment variable `SERVICE_ACCOUNT_FILE` which contains a path to the service account
+credentials json file and `DELEGATED_USER` which is your G Suite admin email address. These can be added to a `.env`
+file to the project root.
+
 Installing
 ----------
 To get the development environment up, a virtual environment must be established and the dependencies must be installed
