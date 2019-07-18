@@ -3,7 +3,7 @@ from src.googleintegration.directory.api_connection import service
 
 
 def list_all(group_key, page_token=None):
-    response = service.members().list(groupKey=group_key, pageToken=page_token).execute()
+    response = service.members().list(groupKey=group_key, pageToken=page_token, roles='MEMBER').execute()
     members = response.get('members', [])
 
     try:
