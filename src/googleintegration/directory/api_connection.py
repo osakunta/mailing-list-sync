@@ -7,7 +7,7 @@ def __create_api_connection():
         'admin',
         'directory_v1',
         scopes=GOOGLE_API['directory_scopes'],
-        delegation=True
+        subject=GOOGLE_API['delegated_user']
     )
 
 
