@@ -18,9 +18,16 @@ also need to have a G Suite admin account from which you need to delegate access
 The service account in question needs to also have a read access to the Google sheet and the project needs to have
 Admin SDK and Sheets APIs enabled.
 
-There needs to be an environment variable `SERVICE_ACCOUNT_FILE` which contains a path to the service account
+The service account also needs to have permissions to create service account tokens to itself. To be more specific,
+it needs to have role `roles/iam.serviceAccountTokenCreator` assigned to itself. You can find more details 
+[here](https://github.com/GoogleCloudPlatform/professional-services/tree/master/examples/gce-to-adminsdk).
+
+There needs to be an environment variable `GOOGLE_APPLICATION_CREDENTIALS` which contains a path to the service account
 credentials json file and `DELEGATED_USER` which is your G Suite admin email address. These can be added to a `.env`
 file to the project root.
+
+In production, the `GOOGLE_APPLICATION_CREDENTIALS` variable is not needed if the application is running in GCP
+environment. In that case the application will try to use the default service account that is assigned to the machine.
 
 Installing
 ----------
