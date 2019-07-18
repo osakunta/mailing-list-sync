@@ -1,0 +1,16 @@
+# docker
+.dockerignore
+Dockerfile
+
+# git
+.git/
+.gitignore
+
+# my editor(s)
+.idea/
+
+# documentation
+README.md
+
+# Misc
+Makefile
