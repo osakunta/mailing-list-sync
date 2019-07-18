@@ -5,7 +5,17 @@ from google.oauth2 import service_account
 from src.config import GOOGLE_API, ENV
 
 
-def update_credentials(credentials, subject, scopes):
+def connect_to_api(api_name, api_version, scopes=None, subject=None):
+    if ENV == 'test':
+        return
+
+    credentials, _ = default()
+    credentials = __update_credentials(credentials, subject, scopes)
+
+    return build(api_name, api_version, credentials=credentials, cache_discovery=False)
+
+
+def __update_credentials(credentials, subject, scopes):
     try:
         updated_credentials = credentials.with_subject(subject).with_scopes(scopes)
     except AttributeError:
@@ -32,13 +42,3 @@ def update_credentials(credentials, subject, scopes):
         raise
 
     return updated_credentials
-
-
-def connect_to_api(api_name, api_version, scopes=None, subject=None):
-    if ENV == 'test':
-        return
-
-    credentials, _ = default()
-    credentials = update_credentials(credentials, subject, scopes)
-
-    return build(api_name, api_version, credentials=credentials, cache_discovery=False)
