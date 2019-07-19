@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "752c74efc0734d7ce00b026d4a7eaa965cb40c92f8b83447a2fd303f2a0ab015"
+            "sha256": "d2769544a4e723423a30cc3b4efe0399ecee7ea93ed08b1a18cd8f8858c6a474"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -92,10 +92,10 @@
         },
         "oauthlib": {
             "hashes": [
-                "sha256:0ce32c5d989a1827e3f1148f98b9085ed2370fc939bf524c9c851d8714797298",
-                "sha256:3e1e14f6cde7e5475128d30e97edc3bfb4dc857cb884d8714ec161fdbb3b358e"
+                "sha256:40a63637707e9163eda62d0f5345120c65e001a790480b8256448543c1f78f66",
+                "sha256:b4d99ae8ccfb7d33ba9591b59355c64eef5241534aa3da2e4c0435346b84bc8e"
             ],
-            "version": "==3.0.1"
+            "version": "==3.0.2"
         },
         "pyasn1": {
             "hashes": [
@@ -118,6 +118,13 @@
             ],
             "index": "pypi",
             "version": "==0.10.3"
+        },
+        "python-json-logger": {
+            "hashes": [
+                "sha256:b7a31162f2a01965a5efb94453ce69230ed208468b0bbc7fdfc56e6d8df2e281"
+            ],
+            "index": "pypi",
+            "version": "==0.1.11"
         },
         "requests": {
             "hashes": [
