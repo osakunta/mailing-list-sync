@@ -9,5 +9,3 @@ COPY Pipfile* ./
 RUN pipenv install --system --deploy
 
 COPY src/ ./src
-
-ENTRYPOINT ["python", "-m", "src"]
