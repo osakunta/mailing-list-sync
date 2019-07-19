@@ -1,6 +1,7 @@
 import sys
 import logging
 from pythonjsonlogger import jsonlogger
+from src.config import ENV
 
 
 class StackdriverJsonFormatter(jsonlogger.JsonFormatter, object):
@@ -16,14 +17,17 @@ class StackdriverJsonFormatter(jsonlogger.JsonFormatter, object):
 
 def setup_logging():
     logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
-    logging.basicConfig(level=logging.INFO)
 
     logger = logging.getLogger()
-    handler = logging.StreamHandler(sys.stdout)
-    formatter = StackdriverJsonFormatter()
 
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
+    if ENV == 'production':
+        handler = logging.StreamHandler(sys.stdout)
+        formatter = StackdriverJsonFormatter()
+
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+    else:
+        logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
     return logger
 
