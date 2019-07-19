@@ -1,6 +1,5 @@
-from dotenv import load_dotenv
-import logging
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -13,8 +12,3 @@ GOOGLE_API = {
     'directory_scopes': ['https://www.googleapis.com/auth/admin.directory.group'],
     'sheets_scopes': ['https://www.googleapis.com/auth/spreadsheets.readonly'],
 }
-
-
-def setup_logging():
-    logging.getLogger('googleapiclient.discovery').setLevel(logging.ERROR)
-    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)

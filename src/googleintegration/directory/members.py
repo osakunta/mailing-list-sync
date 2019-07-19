@@ -1,4 +1,4 @@
-import logging
+from src.logger import log
 from src.googleintegration.directory.api_connection import service
 
 
@@ -34,4 +34,4 @@ def __delete(group_key, member_key):
 
 def __check_for_errors(request_id, response, exception):
     if exception is not None:
-        logging.error(exception)
+        log.error(exception)

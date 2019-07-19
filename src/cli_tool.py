@@ -1,5 +1,5 @@
 import click
-import logging
+from src.logger import log
 from src.googleintegration.directory import groups as google_groups
 from src.googleintegration.sheets import spreadsheets
 from src.synchronizer import synchronize_group
@@ -15,10 +15,10 @@ def groups():
     group_list = google_groups.list_all()
 
     if not group_list:
-        logging.info('No groups in the domain.')
+        log.info('No groups in the domain.')
     else:
         for group in group_list:
-            logging.info(u'{0} ({1})'.format(group['name'], group['email']))
+            log.info(u'{0} ({1})'.format(group['name'], group['email']))
 
 
 @cli.command()
