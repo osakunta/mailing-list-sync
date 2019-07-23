@@ -1,4 +1,4 @@
-import logging
+from src.logger import log
 from src.googleintegration.directory import members
 
 
@@ -7,18 +7,18 @@ def synchronize_group(group_key, new_list):
     insert_items, remove_items = __get_diff(old_list, new_list)
 
     if not (insert_items or remove_items):
-        logging.info('Group {} is already synchronized'.format(group_key))
+        log.info('Group {} is already synchronized'.format(group_key))
         return
 
-    logging.info('Synchronizing group: {}'.format(group_key))
+    log.info('Synchronizing group: {}'.format(group_key))
 
     if insert_items:
-        logging.info('Adding following email addresses ({}) to the group:'.format(len(insert_items)))
-        logging.info(insert_items)
+        log.info('Adding following email addresses ({}) to the group:'.format(len(insert_items)))
+        log.info(insert_items)
 
     if remove_items:
-        logging.info('Deleting following email addresses ({}) from the group:'.format(len(remove_items)))
-        logging.info(remove_items)
+        log.info('Deleting following email addresses ({}) from the group:'.format(len(remove_items)))
+        log.info(remove_items)
 
     members.insert_and_remove_in_batch(group_key, insert_items, remove_items)
 
