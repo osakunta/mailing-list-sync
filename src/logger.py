@@ -20,6 +20,8 @@ def setup_logging():
 
     logger = logging.getLogger()
 
+    logger.setLevel(logging.INFO)
+
     if ENV == 'production':
         handler = logging.StreamHandler(sys.stdout)
         formatter = StackdriverJsonFormatter()
@@ -27,9 +29,6 @@ def setup_logging():
         handler.setFormatter(formatter)
         logger.addHandler(handler)
     else:
-        logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+        logging.basicConfig(format='%(asctime)s %(message)s')
 
     return logger
-
-
-log = setup_logging()

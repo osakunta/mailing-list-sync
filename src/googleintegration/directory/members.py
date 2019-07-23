@@ -1,5 +1,7 @@
-from src.logger import log
+import logging
 from src.googleintegration.directory.api_connection import service
+
+log = logging.getLogger(__name__)
 
 
 def list_all(group_key, page_token=None):

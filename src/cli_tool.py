@@ -1,8 +1,10 @@
 import click
-from src.logger import log
+import logging
 from src.googleintegration.directory import groups as google_groups
 from src.googleintegration.sheets import spreadsheets
 from src.synchronizer import synchronize_group
+
+log = logging.getLogger(__name__)
 
 
 @click.group()
