@@ -37,4 +37,28 @@ def __get_diff(old_list, new_list):
     insert_items = new_set - old_set
     remove_items = old_set - new_set
 
+    insertable = list(insert_items)
+    removable = list(remove_items)
+
+    # Ensure there are no matching addresses that Google Groups has
+    # automatically changed. Example changes that Google Groups can make:
+    # - 'exampleuser@example.com'  => 'example.user@example.com'
+    # - 'example.user@example.com' => 'Example.User@example.com'
+    for insert_item in insertable:
+        for remove_item in removable:
+            if __simplify(insert_item) == __simplify(remove_item):
+                log.info(
+                    'Ignoring matched addresses: "{}", "{}"'.format(
+                        insert_item,
+                        remove_item
+                    )
+                )
+
+                insert_items.remove(insert_item)
+                remove_items.remove(remove_item)
+
     return insert_items, remove_items
+
+
+def __simplify(string):
+    return string.replace('.', '').lower()
