@@ -1,7 +1,21 @@
 language: python
 python:
-  - '3.6'
+- '3.6'
+services:
+- docker
 install:
-  - 'pip install pipenv'
-  - 'pipenv install --dev'
-script: 'make coverage-upload'
+- pip install pipenv
+- pipenv install --dev
+script: make coverage-upload
+deploy:
+  provider: script
+  script: >
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    && make docker-build docker-push
+
+  on:
+    branch: master
+env:
+  matrix:
+  - secure: rHRuGV+obk3zB7mMG5zraDL6eYn04MIiXm1W0D6itliy0JUsxjW4284opPRh2i2q/VrVwxKTqUZv/8ZYA1nn+/519fkVUD7CMggjdbmu/7K0TzVA5oyTbjgynA3mztMPgqyg+IYkd2KmCiGAJMOlMgMjGxfRpHYFo4ByHbX5OCffWVI7KqfmnXY1Honc91aAz5LygEI8ihgNPx3B+Ol038EuEYMOrQXiOCBN0GMGspTjN+vBLTzM8w3pfxe0/M+Zy4+IzKM0Y4rE0Nfb2mYDId6EwPNl7RQeVbUvrSBMBZHcbLsgDgc81VUTV9hlCCpln7x8lmctGVRrVlSGbYNp2f6mYOHRrzPJGM3bI2xFLaWXTB8ao4sadx+Sh8sDTLuzfeSm8mRg3UR5U4oseS8sUD2ql4OguwnzbaRDFVENyC2IKUCI5IysKSYzjPt8NlqIJ43cSVwiynere+KxXREw9Qkvdkm/MqMXlUXW7lT79VO/ZD0I9MRDPa61CkVtr+S52HiFlzEL9LgCA+8VRzixiy/C9JR76uNv95XctF82gnsxcQGcywLhZIFoweM5hn7mcchIiQtcju7VUEBppqLMpECIcrgYVvA8vqRxxXPEvZScxGV7wOHuJZyYiPzL4yn7api+e8U2HWD6mPmn86Vb2xC+xB40lhmiZwBbtASf7XY=
+  - secure: cbQliHTxM4/Y60BNWTlLM37WDXRO6UJ8mW9XlBYxjz6nVgt0orkUyp8GNQBTqo+qtZUetKIGEtbxAOV6XhtEbwGWvt5qBB8Oh/oPKAoQKQyzjxwRIIeQm2y0oRCuNrf5gFvXzBjDWOPlrU4Y1BSBXGG7OnHW+jb0BTu7M4wCCPQMjsST2UQ2W9+0rG+YpSaod2bzesRX0kcPtEE7l9s8heobZxVcXwPIhqb6yvKu1O4CoImH5AuqNAzFmxvzw/T3e3ZpO2g0NKrhtkx9GWnM2vnLCwDAm/0njoLjTTDWCS3Dy/xEARZKZ5X2OJEd0xvC/8HG5u58217G6JLxily/138CzwHsQx8XE8bu9Sho17S+t7tQyAw3rc8/E8At0vlrx+Ptkq6Vgzzoy7dM20E+eBkxAnSlyw5HmW6m87On55mckUyxC6Ch2bwirWQQ2LU43kLKJJLVj1J4WIxatCY78p0FzgfK+1cYzXm26g4U//lpIF922aCo1EjGdLsUBPwzV87+qRBgUsf2HZE2cUdejosq/iDTDD9KedUweuf3Pg/1Ubjcj9BqMAqnoYSmqVV12Rgt9MxGFrPhyfYfYrulwU/hcxF8LbVYCdAv2EhdilcazXUwdq5lJ0cXzxKCIOjGJfx06XDiKhoV3wUcZJUEZLivtiw9cROxyOQgedGyNyQ=
